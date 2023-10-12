@@ -1,0 +1,580 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>LeagueDBSCA</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>cccc9aae-0a43-4a0c-8991-e81c26e7c9e4</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath></RootPath>
+    <RootNamespace>LeagueDBSCA</RootNamespace>
+    <AssemblyName>LeagueDBSCA</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeSchemaNameInFileName>True</IncludeSchemaNameInFileName>
+    <IsSqlChangeAutomationProject>True</IsSqlChangeAutomationProject>
+    <MinimumEngineVersion>1.17.18144</MinimumEngineVersion>
+    <SqlChangeAutomationSchemaVersion>1.12</SqlChangeAutomationSchemaVersion>
+    <DeployOnceSubFolder>Migrations</DeployOnceSubFolder>
+    <DeployChangesSubFolder>Programmable Objects</DeployChangesSubFolder>
+    <DeployChangesImportSchemaFolders>True</DeployChangesImportSchemaFolders>
+    <PreDeploymentSubFolder>Pre-Deployment</PreDeploymentSubFolder>
+    <PostDeploymentSubFolder>Post-Deployment</PostDeploymentSubFolder>
+    <GenerateSqlPackage>False</GenerateSqlPackage>
+    <MigrationOrdering>FilePath</MigrationOrdering>
+    <EvaluateExecutionOrderOnImport>True</EvaluateExecutionOrderOnImport>
+    <Provisioner>CustomScripts</Provisioner>
+  </PropertyGroup>
+  <!-- SQL CHANGE AUTOMATION OFFLINE SCHEMA MODEL OPTIONS -->
+  <PropertyGroup>
+    <SyncToOfflineSchemaModel>True</SyncToOfflineSchemaModel>
+    <!--
+    <SyncToOfflineSchemaModelBySchema>True</SyncToOfflineSchemaModelBySchema>
+    <SyncToOfflineSchemaModelObjectTypes>Table;Assembly;Contract;Default;EventNotification;FullTextCatalog;FullTextStoplist;MessageType;PartitionFunction;PartitionScheme;Queue;ServiceBinding;Role;Route;Rule;Schema;SearchPropertyList;Service;Sequence;Synonym;User;UserDefinedType;XmlSchemaCollection</SyncToOfflineSchemaModelObjectTypes>
+    <SchemaModelSubFolder>Schema-Model</SchemaModelSubFolder>
+    <FailBuildOnParseErrors>False</FailBuildOnParseErrors>
+    -->
+  </PropertyGroup>
+  <!-- SQL CHANGE AUTOMATION PROGRAMMABLE OBJECT OPTIONS -->
+  <PropertyGroup>
+    <ProgrammableObjectHandling>UseRepeatableScriptsForAllObjects</ProgrammableObjectHandling>
+    <!--
+    <DeployChangesInitialImportDone>False</DeployChangesInitialImportDone>
+    <DeployChangesImportObjectTypes>StoredProcedure;Function;View;DdlTrigger</DeployChangesImportObjectTypes>
+    <DeployChangesSubFolder>Deploy-Changes</DeployChangesSubFolder>
+    -->
+  </PropertyGroup>
+  <!-- SQL CHANGE AUTOMATION SCRIPT GENERATION OPTIONS -->
+  <PropertyGroup>
+    <!-- These properties might be set by the Developer -->
+    <!--
+    <SyncOptionIncludeDependentObjects>False</SyncOptionIncludeDependentObjects>
+    <SyncOptionIncludeExistenceChecks>False</SyncOptionIncludeExistenceChecks>
+    <SyncOptionUseDropCreateInsteadOfAlter>False</SyncOptionUseDropCreateInsteadOfAlter>
+    <SyncOptionDisableDdlTriggers>False</SyncOptionDisableDdlTriggers>
+    <SyncOptionCaseSensitiveObjectDefinition>False</SyncOptionCaseSensitiveObjectDefinition>
+
+    <SyncOptionIgnoreExtendedProperties>False</SyncOptionIgnoreExtendedProperties>
+    <SyncOptionIgnoreCommentsInBodies>False</SyncOptionIgnoreCommentsInBodies>
+    <SyncOptionIgnoreAnsiOptions>False</SyncOptionIgnoreAnsiOptions>
+    <SyncOptionIgnoreCollations>True</SyncOptionIgnoreCollations>
+    <SyncOptionIgnoreColumnsOrder>True</SyncOptionIgnoreColumnsOrder>
+    <SyncOptionIgnoreWhiteSpace>True</SyncOptionIgnoreWhiteSpace>
+    <SyncOptionIgnoreSynonymDatabaseAndServerName>True</SyncOptionIgnoreSynonymDatabaseAndServerName>
+    <SyncOptionIgnoretSQLt>True</SyncOptionIgnoretSQLt>
+    <SyncOptionIgnoreDmlTriggers>False</SyncOptionIgnoreDmlTriggers>
+    <SyncOptionIgnoreInsteadOfTriggers>False</SyncOptionIgnoreInsteadOfTriggers>
+    <SyncOptionIgnoreBindings>False</SyncOptionIgnoreBindings>
+    <SyncOptionIgnoreQueueEventNotifications>False</SyncOptionIgnoreQueueEventNotifications>
+    <SyncOptionIgnoreSquareBrackets>False</SyncOptionIgnoreSquareBrackets>
+    <SyncOptionIgnoreWithElementOrder>True</SyncOptionIgnoreWithElementOrder>
+    <SyncOptionIgnoreWithEncryption>False</SyncOptionIgnoreWithEncryption>
+    -->
+    <!-- These properties might be set by the DBA -->
+    <!--  SyncOptionIgnoreDataspaces maps to SQL Compare's option IgnoreFileGroupsPartitionSchemesAndPartitionFunctions -->
+    <!--
+    <SyncOptionIgnoreDataspaces>True</SyncOptionIgnoreDataspaces>
+    <SyncOptionIgnoreConstraintNotForReplicationAttribute>True</SyncOptionIgnoreConstraintNotForReplicationAttribute>
+    <SyncOptionIgnoreFillFactor>True</SyncOptionIgnoreFillFactor>
+    <SyncOptionIgnoreIndexLockAttributes>False</SyncOptionIgnoreIndexLockAttributes>
+    <SyncOptionIgnoreStatistics>True</SyncOptionIgnoreStatistics>
+    <SyncOptionIgnoreDataCompression>True</SyncOptionIgnoreDataCompression>
+    <SyncOptionIgnoreFullTextIndexing>False</SyncOptionIgnoreFullTextIndexing>
+    <SyncOptionIgnoreReplicationTriggers>True</SyncOptionIgnoreReplicationTriggers>
+    <SyncOptionIgnoreSchemaObjectAuthorization>False</SyncOptionIgnoreSchemaObjectAuthorization>
+    <SyncOptionIgnoreStatisticsNorecompute>False</SyncOptionIgnoreStatisticsNorecompute>
+    <SyncOptionConsiderNextFilegroupInPartitionSchemes>False</SyncOptionConsiderNextFilegroupInPartitionSchemes>
+    -->
+    <!-- Shared Developer/DBA options -->
+    <!--
+    <SyncOptionIgnoreIndexes>False</SyncOptionIgnoreIndexes>
+    <SyncOptionIgnorePermissions>False</SyncOptionIgnorePermissions>
+    <SyncOptionIgnoreConstraintWithNoCheckAttribute>True</SyncOptionIgnoreConstraintWithNoCheckAttribute>
+    <SyncOptionIgnoreNocheckAndWithNocheckAttributes>False</SyncOptionIgnoreNocheckAndWithNocheckAttributes>
+    <SyncOptionIgnoreIdentitySeedAndIncrement>False</SyncOptionIgnoreIdentitySeedAndIncrement>
+    <SyncOptionIgnoreUserProperties>True</SyncOptionIgnoreUserProperties>
+    <SyncOptionIgnoreUsersPermissionsAndRoleMemberships>False</SyncOptionIgnoreUsersPermissionsAndRoleMemberships>
+    <SyncOptionAddWithEncryption>False</SyncOptionAddWithEncryption>
+    <SyncOptionDecryptEncryptedObjects>True</SyncOptionDecryptEncryptedObjects>
+    <SyncOptionUseCompatibilityLevel>False</SyncOptionUseCompatibilityLevel>
+    -->
+    <!-- Data comparison/sync options -->
+    <!--
+    <SyncDataOptionDropKeysIndexesAndConstraints>False</SyncDataOptionDropKeysIndexesAndConstraints>
+    <SyncDataOptionDisableForeignKeys>False</SyncDataOptionDisableForeignKeys>
+    <SyncDataOptionIncludeTimestampColumns>False</SyncDataOptionIncludeTimestampColumns>
+    <SyncDataOptionCaseSensitiveObjectDefinition>True</SyncDataOptionCaseSensitiveObjectDefinition>
+    <SyncDataOptionForceBinaryCollation>True</SyncDataOptionForceBinaryCollation>
+    <SyncDataOptionTrimTrailingSpaces>False</SyncDataOptionTrimTrailingSpaces>
+    <SyncDataOptionDisableDmlTriggers>False</SyncDataOptionDisableDmlTriggers>
+    <SyncDataOptionDisableDdlTriggers>True</SyncDataOptionDisableDdlTriggers>
+    <SyncDataOptionDontIncludeCommentsInScript>False</SyncDataOptionDontIncludeCommentsInScript>
+    <SyncDataOptionReseedIdentityColumns>False</SyncDataOptionReseedIdentityColumns>
+    <SyncDataOptionSkipIntegrityChecksForForeignKeys>False</SyncDataOptionSkipIntegrityChecksForForeignKeys>
+    <SyncDataOptionTransportClrDataTypesAsBinary>False</SyncDataOptionTransportClrDataTypesAsBinary>
+    <SyncDataOptionCompressTemporaryFiles>False</SyncDataOptionCompressTemporaryFiles>
+    <SyncDataOptionTreatEmptyStringAsNull>False</SyncDataOptionTreatEmptyStringAsNull>
+    <SyncDataOptionUseChecksumComparison>False</SyncDataOptionUseChecksumComparison>
+    <SyncDataOptionUseMaxPrecisionForFloatComparison>False</SyncDataOptionUseMaxPrecisionForFloatComparison>
+    -->
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!--Import the settings-->
+  <PropertyGroup>
+    <AppDataPath>$(LOCALAPPDATA)</AppDataPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(AppDataPath)==''">
+    <AppDataPath>$(APPDATA)</AppDataPath>
+  </PropertyGroup>
+  <Import Condition="Exists('$(SqlChangeAutomationTargetsPath)')" Project="$(SqlChangeAutomationTargetsPath)" />
+  <Import Condition="!Exists('$(SqlChangeAutomationTargetsPath)')" Project="$(MSBuildExtensionsPath)\SqlChangeAutomation\SqlChangeAutomation.Data.Schema.Ssdt.targets" />
+  <ItemGroup>
+    <Folder Include="Properties\" />
+    <Folder Include="Provisioning\" />
+    <Folder Include="Pre-Deployment\" />
+    <Folder Include="Post-Deployment\" />
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Provisioning\CreateDatabase.sql" />
+    <None Include="Provisioning\DropDatabase.sql" />
+    <None Include="Migrations\001_20231012-1156_JP.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func0.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func1.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func10.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func11.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func12.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func13.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func14.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func15.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func16.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func17.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func18.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func19.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func2.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func20.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func21.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func22.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func23.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func24.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func25.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func26.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func27.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func28.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func29.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func3.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func30.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func31.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func32.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func33.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func34.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func35.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func36.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func37.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func38.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func39.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func4.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func40.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func41.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func42.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func43.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func44.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func45.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func46.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func47.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func48.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func49.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func5.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func50.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func51.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func52.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func53.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func54.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func55.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func56.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func57.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func58.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func59.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func6.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func60.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func61.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func62.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func63.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func64.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func65.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func66.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func67.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func68.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func69.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func7.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func70.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func71.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func72.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func73.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func74.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func75.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func76.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func77.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func78.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func79.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func8.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func80.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func81.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func82.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func83.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func84.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func85.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func86.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func87.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func88.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func89.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func9.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func90.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func91.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func92.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func93.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func94.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func95.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func96.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func97.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func98.sql" />
+    <None Include="Programmable Objects\dbo\Functions\func99.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc0.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc1.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc10.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc11.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc12.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc13.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc14.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc15.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc16.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc17.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc18.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc19.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc2.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc20.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc21.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc22.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc23.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc24.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc25.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc26.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc27.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc28.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc29.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc3.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc30.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc31.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc32.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc33.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc34.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc35.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc36.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc37.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc38.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc39.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc4.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc40.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc41.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc42.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc43.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc44.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc45.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc46.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc47.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc48.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc49.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc5.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc50.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc51.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc52.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc53.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc54.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc55.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc56.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc57.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc58.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc59.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc6.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc60.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc61.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc62.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc63.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc64.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc65.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc66.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc67.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc68.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc69.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc7.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc70.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc71.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc72.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc73.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc74.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc75.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc76.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc77.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc78.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc79.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc8.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc80.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc81.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc82.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc83.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc84.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc85.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc86.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc87.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc88.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc89.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc9.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc90.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc91.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc92.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc93.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc94.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc95.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc96.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc97.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc98.sql" />
+    <None Include="Programmable Objects\dbo\Stored Procedures\proc99.sql" />
+    <None Include="Programmable Objects\dbo\Views\view0.sql" />
+    <None Include="Programmable Objects\dbo\Views\view1.sql" />
+    <None Include="Programmable Objects\dbo\Views\view10.sql" />
+    <None Include="Programmable Objects\dbo\Views\view11.sql" />
+    <None Include="Programmable Objects\dbo\Views\view12.sql" />
+    <None Include="Programmable Objects\dbo\Views\view13.sql" />
+    <None Include="Programmable Objects\dbo\Views\view14.sql" />
+    <None Include="Programmable Objects\dbo\Views\view15.sql" />
+    <None Include="Programmable Objects\dbo\Views\view16.sql" />
+    <None Include="Programmable Objects\dbo\Views\view17.sql" />
+    <None Include="Programmable Objects\dbo\Views\view18.sql" />
+    <None Include="Programmable Objects\dbo\Views\view19.sql" />
+    <None Include="Programmable Objects\dbo\Views\view2.sql" />
+    <None Include="Programmable Objects\dbo\Views\view20.sql" />
+    <None Include="Programmable Objects\dbo\Views\view21.sql" />
+    <None Include="Programmable Objects\dbo\Views\view22.sql" />
+    <None Include="Programmable Objects\dbo\Views\view23.sql" />
+    <None Include="Programmable Objects\dbo\Views\view24.sql" />
+    <None Include="Programmable Objects\dbo\Views\view25.sql" />
+    <None Include="Programmable Objects\dbo\Views\view26.sql" />
+    <None Include="Programmable Objects\dbo\Views\view27.sql" />
+    <None Include="Programmable Objects\dbo\Views\view28.sql" />
+    <None Include="Programmable Objects\dbo\Views\view29.sql" />
+    <None Include="Programmable Objects\dbo\Views\view3.sql" />
+    <None Include="Programmable Objects\dbo\Views\view30.sql" />
+    <None Include="Programmable Objects\dbo\Views\view31.sql" />
+    <None Include="Programmable Objects\dbo\Views\view32.sql" />
+    <None Include="Programmable Objects\dbo\Views\view33.sql" />
+    <None Include="Programmable Objects\dbo\Views\view34.sql" />
+    <None Include="Programmable Objects\dbo\Views\view35.sql" />
+    <None Include="Programmable Objects\dbo\Views\view36.sql" />
+    <None Include="Programmable Objects\dbo\Views\view37.sql" />
+    <None Include="Programmable Objects\dbo\Views\view38.sql" />
+    <None Include="Programmable Objects\dbo\Views\view39.sql" />
+    <None Include="Programmable Objects\dbo\Views\view4.sql" />
+    <None Include="Programmable Objects\dbo\Views\view40.sql" />
+    <None Include="Programmable Objects\dbo\Views\view41.sql" />
+    <None Include="Programmable Objects\dbo\Views\view42.sql" />
+    <None Include="Programmable Objects\dbo\Views\view43.sql" />
+    <None Include="Programmable Objects\dbo\Views\view44.sql" />
+    <None Include="Programmable Objects\dbo\Views\view45.sql" />
+    <None Include="Programmable Objects\dbo\Views\view46.sql" />
+    <None Include="Programmable Objects\dbo\Views\view47.sql" />
+    <None Include="Programmable Objects\dbo\Views\view48.sql" />
+    <None Include="Programmable Objects\dbo\Views\view49.sql" />
+    <None Include="Programmable Objects\dbo\Views\view5.sql" />
+    <None Include="Programmable Objects\dbo\Views\view50.sql" />
+    <None Include="Programmable Objects\dbo\Views\view51.sql" />
+    <None Include="Programmable Objects\dbo\Views\view52.sql" />
+    <None Include="Programmable Objects\dbo\Views\view53.sql" />
+    <None Include="Programmable Objects\dbo\Views\view54.sql" />
+    <None Include="Programmable Objects\dbo\Views\view55.sql" />
+    <None Include="Programmable Objects\dbo\Views\view56.sql" />
+    <None Include="Programmable Objects\dbo\Views\view57.sql" />
+    <None Include="Programmable Objects\dbo\Views\view58.sql" />
+    <None Include="Programmable Objects\dbo\Views\view59.sql" />
+    <None Include="Programmable Objects\dbo\Views\view6.sql" />
+    <None Include="Programmable Objects\dbo\Views\view60.sql" />
+    <None Include="Programmable Objects\dbo\Views\view61.sql" />
+    <None Include="Programmable Objects\dbo\Views\view62.sql" />
+    <None Include="Programmable Objects\dbo\Views\view63.sql" />
+    <None Include="Programmable Objects\dbo\Views\view64.sql" />
+    <None Include="Programmable Objects\dbo\Views\view65.sql" />
+    <None Include="Programmable Objects\dbo\Views\view66.sql" />
+    <None Include="Programmable Objects\dbo\Views\view67.sql" />
+    <None Include="Programmable Objects\dbo\Views\view68.sql" />
+    <None Include="Programmable Objects\dbo\Views\view69.sql" />
+    <None Include="Programmable Objects\dbo\Views\view7.sql" />
+    <None Include="Programmable Objects\dbo\Views\view70.sql" />
+    <None Include="Programmable Objects\dbo\Views\view71.sql" />
+    <None Include="Programmable Objects\dbo\Views\view72.sql" />
+    <None Include="Programmable Objects\dbo\Views\view73.sql" />
+    <None Include="Programmable Objects\dbo\Views\view74.sql" />
+    <None Include="Programmable Objects\dbo\Views\view75.sql" />
+    <None Include="Programmable Objects\dbo\Views\view76.sql" />
+    <None Include="Programmable Objects\dbo\Views\view77.sql" />
+    <None Include="Programmable Objects\dbo\Views\view78.sql" />
+    <None Include="Programmable Objects\dbo\Views\view79.sql" />
+    <None Include="Programmable Objects\dbo\Views\view8.sql" />
+    <None Include="Programmable Objects\dbo\Views\view80.sql" />
+    <None Include="Programmable Objects\dbo\Views\view81.sql" />
+    <None Include="Programmable Objects\dbo\Views\view82.sql" />
+    <None Include="Programmable Objects\dbo\Views\view83.sql" />
+    <None Include="Programmable Objects\dbo\Views\view84.sql" />
+    <None Include="Programmable Objects\dbo\Views\view85.sql" />
+    <None Include="Programmable Objects\dbo\Views\view86.sql" />
+    <None Include="Programmable Objects\dbo\Views\view87.sql" />
+    <None Include="Programmable Objects\dbo\Views\view88.sql" />
+    <None Include="Programmable Objects\dbo\Views\view89.sql" />
+    <None Include="Programmable Objects\dbo\Views\view9.sql" />
+    <None Include="Programmable Objects\dbo\Views\view90.sql" />
+    <None Include="Programmable Objects\dbo\Views\view91.sql" />
+    <None Include="Programmable Objects\dbo\Views\view92.sql" />
+    <None Include="Programmable Objects\dbo\Views\view93.sql" />
+    <None Include="Programmable Objects\dbo\Views\view94.sql" />
+    <None Include="Programmable Objects\dbo\Views\view95.sql" />
+    <None Include="Programmable Objects\dbo\Views\view96.sql" />
+    <None Include="Programmable Objects\dbo\Views\view97.sql" />
+    <None Include="Programmable Objects\dbo\Views\view98.sql" />
+    <None Include="Programmable Objects\dbo\Views\view99.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab1.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab10.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab11.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab12.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab13.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab14.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab15.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab16.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab17.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab18.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab19.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab2.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab20.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab21.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab22.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab23.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab24.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab25.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab26.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab27.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab28.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab29.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab3.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab30.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab31.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab32.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab33.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab34.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab35.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab36.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab37.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab38.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab39.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab4.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab40.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab41.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab42.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab43.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab44.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab45.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab46.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab47.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab48.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab49.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab5.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab50.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab51.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab52.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab53.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab54.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab55.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab56.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab57.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab58.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab59.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab6.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab60.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab61.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab62.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab63.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab64.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab65.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab66.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab67.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab68.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab69.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab7.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab70.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab71.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab72.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab73.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab74.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab75.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab76.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab77.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab78.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab79.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab8.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab80.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab81.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab82.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab83.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab84.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab85.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab86.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab87.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab88.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab89.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab9.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab90.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab91.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab92.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab93.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab94.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab95.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab96.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab97.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab98.sql" />
+    <None Include="Schema-Model\dbo\Tables\tab99.sql" />
+    <None Include="Schema-Model\Security\Users\tSQLt.TestClass.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pre-Deployment\01_Initialize_Deployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Post-Deployment\01_Finalize_Deployment.sql" />
+  </ItemGroup>
+</Project>
